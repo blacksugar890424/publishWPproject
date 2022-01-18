@@ -83,7 +83,10 @@ class Game {
             this.money -= 10
             this.board.add_tower(i, j, new Tower(type));
         } else {
-            console.log("Not enough money!")
+            document.getElementById("msg").innerHTML = "<p>Not enough money!</p>";
+            setTimeout(() => {
+                document.getElementById("msg").innerHTML = ""
+            }, 1000)
         }
     }
 
@@ -127,6 +130,11 @@ class Game {
                     this.get_tower(i, j).range_up()
                 }
             } else {
+                document.getElementById("msg").innerHTML = "<p>Not enough money!</p>";
+                setTimeout(() => {
+                    document.getElementById("msg").innerHTML = ""
+                }, 1000)
+                //alert("not enough money!")
                 console.log("not enough money!")
             }
         } else {
@@ -201,6 +209,10 @@ class Game {
                 this.health -= this.enemies[i].get_health();
                 console.log(this.enemies[i].get_health())
                 remove.push(this.enemies[i])
+                document.getElementById("msg").innerHTML = "<p>Lost " + this.enemies[i].get_health() + " health!</p>";
+                setTimeout(() => {
+                    document.getElementById("msg").innerHTML = ""
+                }, 1000)
             } else {
                 new_enemies.push(this.enemies[i]);
             }
